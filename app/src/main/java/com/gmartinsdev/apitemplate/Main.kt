@@ -16,6 +16,8 @@ fun main() {
         .build()
     val service = retrofit.create(Service::class.java)
     val response = service.fetchData()
-    val result = response.execute().body()
-    println(result)
+    val result = response.execute()
+    if (result.isSuccessful) {
+        println(result.body())
+    }
 }
