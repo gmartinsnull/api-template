@@ -14,9 +14,13 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class MainViewModel: ViewModel() {
 
+    init {
+        getData()
+    }
+
     val state = MutableStateFlow<List<ApiData>>(emptyList())
 
-    fun getData() {
+    private fun getData() {
         viewModelScope.launch(Dispatchers.IO) {
             val url = "https://jsonplaceholder.typicode.com"
             val retrofit = Retrofit.Builder()
